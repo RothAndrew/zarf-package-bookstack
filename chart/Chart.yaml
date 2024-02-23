@@ -1,0 +1,21 @@
+apiVersion: v2
+name: bookstack
+version: 0.0.1
+description: Highly opinionated Helm chart for BookStack
+type: application
+keywords:
+  - bookstack
+  - documentation
+  - wiki
+home: https://github.com/RothAndrew/zarf-package-bookstack
+sources:
+  - https://github.com/RothAndrew/zarf-package-bookstack
+maintainers:
+  - name: rothandrew
+icon: https://raw.githubusercontent.com/RothAndrew/zarf-package-bookstack/main/chart/logo.svg
+appVersion: 23.12.2
+dependencies:
+  - name: mariadb
+    version: 16.3.2
+    repository: https://charts.bitnami.com/bitnami
+    condition: mariadb.enabled

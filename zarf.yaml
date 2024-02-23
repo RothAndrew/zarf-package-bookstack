@@ -1,0 +1,30 @@
+kind: ZarfPackageConfig
+metadata:
+  description: Zarf package to deploy BookStack
+  name: bookstack
+  source: https://github.com/RothAndrew/zarf-package-bookstack
+  version: 0.0.1
+  url: https://github.com/RothAndrew/zarf-package-bookstack
+  documentation: https://github.com/RothAndrew/zarf-package-bookstack
+  vendor: Defense Unicorns
+
+variables:
+  - name: BOOKSTACK_APP_KEY
+    description: 'Laravel APP_KEY. Generate one with `echo "base64:$(openssl rand -base64 32)"`. The "base64:" part is required.'
+    prompt: true
+    sensitive: true
+    pattern: '^base64:.*$'
+
+components:
+  - name: bookstack
+    required: true
+    description: Deploy BookStack
+    charts:
+      - name: bookstack
+        localPath: chart
+        namespace: bookstack
+        version: 0.0.1
+        valuesFiles:
+          - values.yaml
+    images:
+      - solidnerd/bookstack:23.12.2

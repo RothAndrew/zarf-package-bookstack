@@ -1,0 +1,2 @@
+app:
+  key: "###ZARF_VAR_BOOKSTACK_APP_KEY###"
